@@ -419,7 +419,7 @@ INSERT INTO public.items (name, description, rarity, category, image_url, effect
   ('Sword of Truth', 'A mighty weapon forged from pure knowledge. Doubles boss battle damage.',
    'legendary'::item_rarity, 'weapon'::item_category, '/items/sword.png',
    jsonb_build_object('boss_damage_multiplier', 2.0, 'type', 'equipment'))
-ON CONFLICT DO NOTHING;
+;
 
 -- =============================================
 -- ACHIEVEMENTS (8 achievements)
@@ -449,8 +449,7 @@ INSERT INTO public.achievements (name, description, icon, xp_reward, coin_reward
    jsonb_build_object('type', 'subjects_studied', 'target', 3, 'description', 'Study 3 different subjects')),
   ('Scholar', 'Master 10 concepts to become a true scholar.',
    '🎓', 1000, 500,
-   jsonb_build_object('type', 'concepts_mastered', 'target', 10, 'description', 'Master 10 concepts'))
-ON CONFLICT DO NOTHING;
+   jsonb_build_object('type', 'concepts_mastered', 'target', 10, 'description', 'Master 10 concepts'));
 
 -- =============================================
 -- CLASSROOMS (2 examples)
@@ -513,8 +512,7 @@ $$;
 INSERT INTO public.subscriptions (user_id, tier, status, current_period_start, current_period_end) VALUES
   ('00000000-0000-0000-0000-000000000001', 'premium'::subscription_tier, 'active'::subscription_status, now(), now() + INTERVAL '1 year'),
   ('00000000-0000-0000-0000-000000000002', 'teacher'::subscription_tier, 'active'::subscription_status, now(), now() + INTERVAL '1 year'),
-  ('00000000-0000-0000-0000-000000000003', 'free'::subscription_tier, 'active'::subscription_status, now(), now() + INTERVAL '1 month')
-ON CONFLICT DO NOTHING;
+   ('00000000-0000-0000-0000-000000000003', 'free'::subscription_tier, 'active'::subscription_status, now(), now() + INTERVAL '1 month');
 
 -- =============================================
 -- DEMO USER PROGRESS (student has completed some levels)
